@@ -26,9 +26,9 @@ class TodoOverviewPage extends StatefulWidget {
 
 class TodoOverviewPageState extends State<TodoOverviewPage> {
 
-  final List<String> todos = <String>["1. Todo", "2. Todo", "3. Todo"];
+  final List<String> todos = <String>["1. Todo", "2. Todo", "3. Todo", "4. Todo", "5. Todo", "6. Todo", "7. Todo"];
 
-  final TextStyle _biggerFont = const TextStyle(fontSize: 40);
+  final TextStyle _biggerFont = const TextStyle(fontSize: 40, color: Colors.pink);
 
   void _swap(List<String> newTodos) {
     setState(() {
@@ -49,7 +49,11 @@ class TodoOverviewPageState extends State<TodoOverviewPage> {
             return _buldRow(todos[index]);
           }),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            todos.add("new Item!!!");
+          });
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
@@ -59,6 +63,7 @@ class TodoOverviewPageState extends State<TodoOverviewPage> {
   Widget _buldRow(String todo) => ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 16),
       title: Text(todo, style: _biggerFont),
+    onTap: () {print("edit $todo");}
   );
 
 }
