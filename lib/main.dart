@@ -25,7 +25,7 @@ class TodoOverviewPage extends StatefulWidget {
 }
 
 class TodoOverviewPageState extends State<TodoOverviewPage> {
-  int _counter = 0;
+
   final List<String> todos = <String>["1. Todo", "2. Todo", "3. Todo"];
 
   final TextStyle _biggerFont = const TextStyle(fontSize: 40);
@@ -57,7 +57,8 @@ class TodoOverviewPageState extends State<TodoOverviewPage> {
   }
 
   Widget _buldRow(String todo) => ListTile(
-    title: Text(todo, style: _biggerFont)
+      contentPadding: EdgeInsets.symmetric(horizontal: 16),
+      title: Text(todo, style: _biggerFont),
   );
 
 }
