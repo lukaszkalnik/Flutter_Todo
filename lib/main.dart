@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -18,15 +20,6 @@ class MyApp extends StatelessWidget {
 class TodoOverviewPage extends StatefulWidget {
   TodoOverviewPage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -36,6 +29,8 @@ class TodoOverviewPage extends StatefulWidget {
 class TodoOverviewPageState extends State<TodoOverviewPage> {
   int _counter = 0;
   final List<String> todos = <String>["1. Todo", "2. Todo", "3. Todo"];
+
+  final TextStyle _biggerFont = const TextStyle(fontSize: 40);
 
   void _swap(List<String> newTodos) {
     setState(() {
@@ -53,8 +48,8 @@ class TodoOverviewPageState extends State<TodoOverviewPage> {
       body: ListView.builder(
           itemCount: todos.length,
           itemBuilder: (BuildContext context, int index) {
-        return new Text(todos[index]);
-      }),
+            return _buldRow(todos[index]);
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Increment',
@@ -62,4 +57,9 @@ class TodoOverviewPageState extends State<TodoOverviewPage> {
       ),
     );
   }
+
+  Widget _buldRow(String todo) => ListTile(
+    title: Text(todo, style: _biggerFont)
+  );
+
 }
